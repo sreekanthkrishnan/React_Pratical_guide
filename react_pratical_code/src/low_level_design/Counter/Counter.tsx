@@ -11,15 +11,16 @@ const Counter = () => {
     }, [count])
 
     const handleDecrement = useCallback(() => {
-        if (count > 0) {
-            setCount((prev) => prev - 1)
-        } else {
-            alert('Count cannot be negative')
-        }
-    }, [count])
+        setCount((prev) => {
+            if (prev > 0) {
+                return prev - 1
+            }
+            return prev
+        })
+    }, [])
 
     const handleReset = useCallback(() => {
-        setCount((prev) => 0)
+        setCount(0)
     }, [])
 
     const handleStepIncrement = useCallback(() => {
